@@ -1,5 +1,13 @@
-console.log("this file has been opened!");
 const saveBtn = document.getElementById("btn-save");
+
+const successRedirect = () => {
+    alert("success!");
+    window.location.href = "/";
+};
+
+const failureRedirect = () => {
+    alert("failure!");
+};
 
 const save = async (e) => {
     e.preventDefault();
@@ -13,18 +21,18 @@ const save = async (e) => {
         content,
     };
 
-    const response = await fetch("http://localhost:8080/api/posts", {
+    const response = await fetch("http://localhost:8080/api/v1/posts", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
             "Content-Type": "application/json",
         },
     });
-    response.status === 200 ? alert("done!") : alert("wrong!");
+    response.status === 200 ? successRedirect() : failureRedirect();
 };
 
 const handleSave = () => {
     saveBtn.addEventListener("click", save);
 };
 
-handleSave();
+if (saveBtn) handleSave();

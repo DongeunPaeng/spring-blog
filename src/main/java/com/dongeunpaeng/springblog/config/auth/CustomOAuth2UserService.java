@@ -19,21 +19,29 @@ import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
-public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+public class CustomOAuth2UserService implements
+OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     private final UsersRepository usersRepository;
     private final HttpSession httpSession;
 
     @Override
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
+    public OAuth2User loadUser(OAuth2UserRequest userRequest)
+        throws OAuth2AuthenticationException {
+        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate =
+            new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
-        String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint()
-                .getUserNameAttributeName();
+        String registrationId = userRequest
+            .getClientRegistration()
+            .getRegistrationId();
+        String userNameAttributeName = userRequest
+            .getClientRegistration()
+            .getProviderDetails()
+            .getUserInfoEndpoint()
+            .getUserNameAttributeName();
 
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName,
-                oAuth2User.getAttributes());
+        OAuthAttributes attributes = OAuthAttributes
+            .of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         Users user = saveOrUpdate(attributes);
         httpSession.setAttribute("user", new SessionUser(user));
