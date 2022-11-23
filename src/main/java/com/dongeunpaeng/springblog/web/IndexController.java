@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
     private final HttpSession httpSession;
 
-
     @GetMapping("/")
     public String index(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
