@@ -13,10 +13,16 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
     private final HttpSession httpSession;
 
+    @GetMapping("/posts/save")
+    public String postSave() {
+        return "posts-save";
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if (user != null) model.addAttribute("userName", user.getName());
+        if (user != null)
+            model.addAttribute("userName", user.getName());
         return "index";
     }
 }
