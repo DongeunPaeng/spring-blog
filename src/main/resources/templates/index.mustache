@@ -2,10 +2,24 @@
 <h1>Build web services with Spring Boot</h1>
 <div>
     {{#posts}}
-        {{id}} {{title}} {{author}} {{modifiedDate}}
+        <tr>
+            <td>
+                {{id}}
+            </td>
+            <td>
+                <a href="/posts/update/{{id}}">{{title}}</a>
+            </td>
+            <td>
+                {{author}}
+            </td>
+            <td>
+                {{modifiedDate}}
+            </td>
+        </tr>
     {{/posts}}
     <a role="button" href="/posts/save">register a post</a>
     {{#userName}}
+    </td>
         Logged in as: <span id="user">{{userName}}</span>
         <a href="/logout">logout</a>
     {{/userName}}
