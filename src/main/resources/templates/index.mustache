@@ -1,6 +1,9 @@
 {{>layout/header}}
 <h1>Build web services with Spring Boot</h1>
 <div>
+    {{#posts}}
+        {{id}} {{title}} {{author}} {{modifiedDate}}
+    {{/posts}}
     <a role="button" href="/posts/save">register a post</a>
     {{#userName}}
         Logged in as: <span id="user">{{userName}}</span>
