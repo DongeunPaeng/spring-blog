@@ -21,7 +21,7 @@ public class Users extends BaseTimeEntity {
     @Column(nullable = false)
     private String email;
 
-    @Column()
+    @Column(length = 2048)
     private String picture;
 
     @Enumerated(EnumType.STRING)
