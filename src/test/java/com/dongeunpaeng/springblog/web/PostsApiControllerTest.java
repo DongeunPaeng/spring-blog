@@ -14,13 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -31,7 +26,6 @@ import com.dongeunpaeng.springblog.domain.posts.Posts;
 import com.dongeunpaeng.springblog.domain.posts.PostsRepository;
 import com.dongeunpaeng.springblog.web.dto.PostsSaveRequestDto;
 import com.dongeunpaeng.springblog.web.dto.PostsUpdateRequestDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
@@ -55,13 +49,10 @@ class PostsApiControllerTest {
     private int port;
 
     @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
     private PostsRepository postsRepository;
 
     @AfterEach
-    public void tearDown() throws Exception {
+    public void tearDown() {
         postsRepository.deleteAll();
     }
 
