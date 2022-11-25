@@ -1,0 +1,17 @@
+language: java
+branches:
+  only:
+    - main
+
+# Travis CI Server Home
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+    - "$HOME/.gradle"
+script: "./gradlew clean build"
+
+# mail alert
+notifications:
+  email:
+    recipients:
+      - bingo992000@gmail.com
