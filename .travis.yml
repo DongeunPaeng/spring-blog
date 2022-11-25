@@ -1,6 +1,7 @@
 language: java
 jdk:
   - openjdk8
+  - openjdk11
 branches:
   only:
     - main
@@ -10,6 +11,8 @@ cache:
   directories:
     - "$HOME/.m2/repository"
     - "$HOME/.gradle"
+before_script:
+  - chmod +x gradlew
 script: "./gradlew clean build"
 
 # mail alert
