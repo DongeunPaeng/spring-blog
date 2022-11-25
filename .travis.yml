@@ -11,9 +11,9 @@ cache:
   directories:
     - "$HOME/.m2/repository"
     - "$HOME/.gradle"
-before_script:
+script:
   - chmod +x gradlew
-script: "./gradlew clean build"
+  - ./gradlew clean build
 
 # mail alert
 notifications:
