@@ -10,10 +10,29 @@ cache:
   directories:
     - "$HOME/.m2/repository"
     - "$HOME/.gradle"
+
 before_install:
   - chmod +x gradlew
+
 script:
   - ./gradlew clean build
+
+before_deploy:
+  - zip -r spring-blog *
+  - mkdir -p deploy
+  - mv spring-blog.zip deploy/spring-blog.zip
+
+deploy:
+  - provider: s3
+    access_key_id = $AWS_ACCESS_KEY
+    secret_access_key = $AWS_SECRET_KEY
+
+    bucket: spring-blog-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
 
 # mail alert
 notifications:
