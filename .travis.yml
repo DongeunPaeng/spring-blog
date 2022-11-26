@@ -25,7 +25,7 @@ before_deploy:
 deploy:
   - provider: s3
     on:
-      repo: spring-blog/main
+      repo: main
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: spring-blog-build
