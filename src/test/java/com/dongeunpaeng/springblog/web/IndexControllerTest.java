@@ -20,6 +20,6 @@ class IndexControllerTest {
         // when
         String body = this.restTemplate.getForObject("/", String.class);
         // then
-        Assertions.assertThat(body).contains("with Spring Boot");
+        Assertions.assertThat(body).contains("Spring Boot");
     }
 }
