@@ -17,7 +17,7 @@ const remove = async (e) => {
     e.preventDefault();
     const id = document.getElementById("id").value;
 
-    const response = await fetch("http://localhost:8080/api/v1/posts/" + id, {
+    const response = await fetch("/api/v1/posts/" + id, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const update = async (e) => {
         content,
     };
 
-    const response = await fetch("http://localhost:8080/api/v1/posts/" + id, {
+    const response = await fetch("/api/v1/posts/" + id, {
         method: "PUT",
         body: JSON.stringify(body),
         headers: {
@@ -63,7 +63,7 @@ const save = async (e) => {
         content,
     };
 
-    const response = await fetch("http://localhost:8080/api/v1/posts", {
+    const response = await fetch("/api/v1/posts", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
