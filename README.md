@@ -25,3 +25,8 @@ Check out my [blog](https://www.dongeunpaeng.com) here!
 
 - Spring security has been updated several times after the book is published
 - You can refer to my repository instead
+
+#### CI/CD
+
+- Travis CI is a bit obsolete; need to migrate to GitHub Actions
+- Continuous Delivery using Nginx can be overridden with Blue/Green deployments provided by AWS
