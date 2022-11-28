@@ -30,3 +30,7 @@ Check out my [blog](https://www.dongeunpaeng.com) here!
 
 - Travis CI is a bit obsolete; need to migrate to GitHub Actions
 - Continuous Delivery using Nginx can be overridden with Blue/Green deployments provided by AWS
+
+#### etc.
+
+- Students should deal with url issues
